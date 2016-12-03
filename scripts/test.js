@@ -45,12 +45,12 @@ function init_object(react_obj)
 
 function getJsonData()
 {
-    /*
+    
     if (window.localStorage) 
     {
         //объект localtorage поддерживаются
         mJsonData = window.localStorage.getItem("_mJsonObject");
-    }*/
+    }
 
     
 
