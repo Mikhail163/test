@@ -56,9 +56,9 @@ function getJsonData()
 
     if(mJsonData === null && typeof mJsonData === "object")
     {
-        var url = window.location.protocol + '//' + window.location.hostname + window.location.pathname+'data.json';
-        console.log(url);
-        mId[0] = 3; // ставим флаг загрузки данных
+        var url = window.location.pathname+'data.json';
+        //console.log(url);
+        mId[0] = 3; // ставим флаг загрузки данных  
         ajaxGetJsonData(url);
          
     }
@@ -104,7 +104,7 @@ function saveJsonData()
 
     check_link(1);
     //mContentArray = getContentArray(); 
-    rebildLink();
+    //rebildLink();
 
     mContentArray = getContentArray(); 
     mReactObj.departmentsClick();     
@@ -177,6 +177,8 @@ function processEvent(event)
     //console.log(event);
     if (event == undefined)
     {
+        if (mJsonData != null)
+            // cj,snbt
         // сюда обычно попадают во время загрузки файла
         return [0];
     }
@@ -388,11 +390,11 @@ function check_link()
         var event = [];
         event['target'] = []
         event['target']['id'] = id[0] +'_'+id[1];
-
+        /*
         if (arguments.length == 1 && arguments[0] == 1)
             // Метод вызван во время инициализации
             processEvent(event);
-        else
+        else*/
             mReactObj.departmentsClick(event); 
     }
 
