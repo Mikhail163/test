@@ -1,0 +1,17 @@
+.download-bar
+{
+  display:block;
+}
+
+
+.download-bar .image
+{
+  width:100px;height:100px;
+  background-image: url(../img/download.gif);
+}
+
+.download-bar .title
+{
+  color:#00ff00;
+}
+
