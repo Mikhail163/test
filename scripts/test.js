@@ -29,12 +29,7 @@ function init_object(react_obj)
     mReactObj = react_obj;
     mId = [0,0];
     getJsonData();
-    unserializeJsonData();  
-    
-
-    check_link(1);
-    //mContentArray = getContentArray(); 
-    rebildLink();
+   
 
     // устанавливаем событие изменения ссылки
     if ('onhashchange' in window) // Если событие поддерживается браузером
@@ -50,18 +45,25 @@ function init_object(react_obj)
 
 function getJsonData()
 {
+    /*
     if (window.localStorage) 
     {
         //объект localtorage поддерживаются
         mJsonData = window.localStorage.getItem("_mJsonObject");
-    }
+    }*/
+
+    
 
     if(mJsonData === null && typeof mJsonData === "object")
     {
+        var url = window.location.protocol + '//' + window.location.hostname + window.location.pathname+'data.json';
+        console.log(url);
         mId[0] = 3; // ставим флаг загрузки данных
-        ajaxGetJsonData('/data.json');
+        ajaxGetJsonData(url);
          
     }
+    else
+        saveJsonData();
         
 }
 
@@ -85,6 +87,7 @@ function ajaxGetJsonData(url) {
     xmlhttp.send();
 }
 
+
 function saveJsonData()
 {
     //console.log(data);
@@ -97,7 +100,12 @@ function saveJsonData()
     }
 
     mId[0] = 0; // данные загружены - оповещаем react
-    unserializeJsonData();  
+    unserializeJsonData();
+
+    check_link(1);
+    //mContentArray = getContentArray(); 
+    rebildLink();
+
     mContentArray = getContentArray(); 
     mReactObj.departmentsClick();     
 }
