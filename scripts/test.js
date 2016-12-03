@@ -390,11 +390,13 @@ function check_link()
         var event = [];
         event['target'] = []
         event['target']['id'] = id[0] +'_'+id[1];
-        /*
+        
         if (arguments.length == 1 && arguments[0] == 1)
             // Метод вызван во время инициализации
-            processEvent(event);
-        else*/
+            // setState еще вызывать нельзя,
+            // поэтому отсылаем два аргумента
+            mReactObj.departmentsClick(event, 1);
+        else
             mReactObj.departmentsClick(event); 
     }
 

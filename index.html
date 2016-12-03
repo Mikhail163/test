@@ -35,7 +35,7 @@
 
                 var displayedDepartments = mContentArray;
                 
-                if (event != undefined)
+                if (event != undefined && arguments.length != 2)
                     this.setState({
                         displayedDepartments: displayedDepartments
                 });
