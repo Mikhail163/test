@@ -45,12 +45,12 @@ function init_object(react_obj)
 
 function getJsonData()
 {
-    
+    /*
     if (window.localStorage) 
     {
         //объект localtorage поддерживаются
         mJsonData = window.localStorage.getItem("_mJsonObject");
-    }
+    }*/
 
     
 
@@ -395,7 +395,7 @@ function check_link()
             // Метод вызван во время инициализации
             // setState еще вызывать нельзя,
             // поэтому отсылаем два аргумента
-            mReactObj.departmentsClick(event, 1);
+            mReactObj.departmentsClick(event);
         else
             mReactObj.departmentsClick(event); 
     }
