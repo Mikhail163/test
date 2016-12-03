@@ -24,6 +24,8 @@ var mPhoto;
 var mReactObj;
 var mCurrentLink = '';
 
+var _mAjaxUse = false;
+
 function init_object(react_obj)
 {
     mReactObj = react_obj;
@@ -45,12 +47,12 @@ function init_object(react_obj)
 
 function getJsonData()
 {
-    /*
+    
     if (window.localStorage) 
     {
         //объект localtorage поддерживаются
         mJsonData = window.localStorage.getItem("_mJsonObject");
-    }*/
+    }
 
     
 
@@ -68,6 +70,7 @@ function getJsonData()
 }
 
 function ajaxGetJsonData(url) {
+    _mAjaxUse = true;
     xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -395,7 +398,12 @@ function check_link()
             // Метод вызван во время инициализации
             // setState еще вызывать нельзя,
             // поэтому отсылаем два аргумента
-            mReactObj.departmentsClick(event);
+            // если загружаем через аякс - то можно
+            // вызывать
+            if (_mAjaxUse)
+                mReactObj.departmentsClick(event);
+            else
+                mReactObj.departmentsClick(event, 1);
         else
             mReactObj.departmentsClick(event); 
     }
